@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+{% block content %}
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Scraping Film Google Play</h1>
+        <p class="lead text-muted">
+        <p>
+          <a href="scraping" class="btn btn-primary my-2">Scraping</a>
+          <a href="#" class="btn btn-secondary my-2">Data Film</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    
+{% for row in datafilm %}
+<div class="card d-flex flex-wrap" style="width: 18rem;">
+  <img src="{{row.4}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{row.1}}</h5>
+    <p class="card-text">{{row.3}}</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+{% endfor %}
+  </div>
+{% endblock %}
