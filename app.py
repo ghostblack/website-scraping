@@ -31,14 +31,23 @@ def scrap():
         proses = request.form["pcr"]
         proses_scraping(proses)
         flash("data berhasil")
-        return render_template("home.html")
+        return render_template("scraping.html")
     else :
         flash("data tidak berhasil")
         return render_template("scraping.html")
         
 @app.route("/datafilm")
 def data():
-    return render_template("datafilm.html")
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM data_film")
+    data = cur.fetchall()
+    cur.close()
+    return render_template("datafilm.html",datafilm = data)
+
+
+
+
+
 
 
 def proses_scraping(url):
